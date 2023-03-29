@@ -2,25 +2,9 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var timeBlock= $('.row.time-block');
-var saveButton= $('.saveBtn');
-
-//below is the each method which iterates through each element that has the class of 
-//.row.text-block and grabs the attribute of id from each of these elements
-//i need to figure out how to get rid of the number in each id, so it targets only the hour aspect
-timeBlock.each(function(){
-  var hourID = $(this).attr('id');
-  var individualHour= hourID.something(index)
-})
-
-saveButton.on('click', function(this){
-localStorage.setItem('individualHour');
-//the this references each element in the DOM that has the attr of id and class of row time block
-//as referenced in the above code
-
-})
 
 $(function () {
+
 
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -29,6 +13,23 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+var timeBlock= $('.row.time-block');
+var saveButton= $('.saveBtn');
+var containerEl=$(".container");
+var hour= $("div").data("hour"); 
+
+
+
+//below is the each method which iterates through each element that has the class of 
+//.row.text-block and grabs the attribute of id from each of these elements
+//i need to figure out how to get rid of the number in each id, so it targets only the hour aspect
+
+
+saveButton.on('click', function(this){
+localStorage.setItem('need text area of hour');
+});
+//the this references each element in the DOM that has the attr of id and class of row time block
+//as referenced in the above code
 
     //create a variable using each method that grabs onto those dives
   
@@ -39,9 +40,9 @@ $(function () {
   // current hour in 24-hour time?
 
                var currentHour= dayjs().hour;
-               if (individualHour < currentHour){
+               if (hour < currentHour){
                  timeBlock.attr('.past');
-               } else if ('retrieve ids' > currentHour) {
+               } else if (hour > currentHour) {
                 timeBlock.attr('.future');
                } else {
                 timeBlock.attr('.present')
@@ -58,3 +59,5 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
               var currentDate= $('.currentDay').dayjs().format('dddd, MMMM D')
 });
+
+//use data hour to traverse throuhg on each thing
