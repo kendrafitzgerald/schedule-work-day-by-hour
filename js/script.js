@@ -2,7 +2,6 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-
 $(function () {
 
 
@@ -13,12 +12,17 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-var timeBlock= $('.row.time-block');
-var saveButton= $('.saveBtn');
-var containerEl=$(".container");
-var hour= $("div").data("hour"); 
+
+
+// var timeBlock= $('.row.time-block');
+// var saveButton= $('.saveBtn');
+// var containerEl=$(".container");
+// var hour= $("div").data("hour"); 
+
 var currentDay = dayjs();
+
 $('#currentDay').text(currentDay.format('dddd, MMMM D'));
+console.log(currentDay);
 
 
 
@@ -27,9 +31,9 @@ $('#currentDay').text(currentDay.format('dddd, MMMM D'));
 //i need to figure out how to get rid of the number in each id, so it targets only the hour aspect
 
 
-saveButton.on('click', function(this){
-localStorage.setItem('need text area of hour');
-});
+// saveButton.on('click', function(){
+// localStorage.setItem('need text area of hour');
+// });
 //the this references each element in the DOM that has the attr of id and class of row time block
 //as referenced in the above code
 
@@ -41,14 +45,14 @@ localStorage.setItem('need text area of hour');
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-               var currentHour= dayjs().hour;
-               if (hour < currentHour){
-                 timeBlock.attr('.past');
-               } else if (hour > currentHour) {
-                timeBlock.attr('.future');
-               } else {
-                timeBlock.attr('.present')
-              }
+              //  var currentHour= dayjs().hour;
+              //  if (hour < currentHour){
+              //    timeBlock.attr('.past');
+              //  } else if (hour > currentHour) {
+              //   timeBlock.attr('.future');
+              //  } else {
+              //   timeBlock.attr('.present')
+              // }
               //how do i retrieve these ids ? should I use attr or another manner?
               //potential code for this 
 
@@ -56,10 +60,9 @@ localStorage.setItem('need text area of hour');
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-              localStorage.getItem(timeBlock.children(2).text?);
+              //localStorage.getItem(timeBlock.children(2).text?);
   
   // TODO: Add code to display the current date in the header of the page.
-              var currentDate= $('.currentDay').dayjs().format('dddd, MMMM D')
 });
 
 //use data hour to traverse throuhg on each thing
