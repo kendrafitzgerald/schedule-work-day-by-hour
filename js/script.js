@@ -17,6 +17,8 @@ var timeBlock= $('.row.time-block');
 var saveButton= $('.saveBtn');
 var containerEl=$(".container");
 var hour= $("div").data("hour"); 
+var currentDay = dayjs();
+$('#currentDay').text(currentDay.format('dddd, MMMM D'));
 
 
 
