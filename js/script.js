@@ -1,16 +1,33 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 
 $(function () {
-
+  // This variable corresponds to each HTML element with the listed class, or each save button icon on page.
   var saveButton= $('.saveBtn');
-  var textArea = $('.description');
-  var hourID = $("div[data-hour]");
-
+// These variables utilize dayJS to retrieve the current day and time.
   var currentDay = dayjs();
+  var currentHour= dayjs().hour();
+  //These variables correspond to the text area and the entire container element of the page
+  var textArea = $(".description");
+  var containerEl = $(".container-lg")
 
-  $('#currentDay').text(currentDay.format('dddd, MMMM D'))
+  //This variable corresponds to the hour listed in the data-hour atttribute in HTML
+  var hourID = containerEl.children().data("hour")
+
+  // This line of code accesses the header, with an ID of current day, and renders the current date on the 
+  // page by attributing the text of the dayjs variable.
+  $('#currentDay').text(currentDay.format('dddd, MMMM D'));
+
+  //These conditional statements state that if hour id in the data-hour attribute divs is less than the current
+  //hour given by dayJS, then the text area will be given a class of past, or grey. If the hourID is greater
+  //than the current hour, it will be given a class of future and will be red. Lastly, if the hour times are
+  //equal, or it is presently that hour, the text area will be given a class of present or red.
+  if (hourID < currentHour){
+    textArea.attr("class", "past")
+    } else if (hourID > currentHour) {
+    textArea.attr("class", "future");
+   } else {
+   textArea.attr("class", "present");
+   }
+
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -21,28 +38,36 @@ $(function () {
 
 
 
-saveButton.on('click', function(){
-localStorage.setItem('need text area of hour');
-});
+saveButton.on('click', function(event){
 
-  
+var saveIcon = $(event.target);
 
-              var currentHour= currentDay.hour();
-              console.log(currentHour);
+var dailyTasks = {
 
-              if (hourID < currentHour){
-                textArea.css({"background-color": "#d3d3d3", "color": "white"});
-               } else if (hourID > currentHour) {
-               textArea.css({"background-color": "#77dd77", "color": "white"});
-               } else {
-              textArea.css({"background-color": "#ff6961", "color": 'white'})
-              }
+    time: saveIcon.parent().attr("id"),
+    userInput: saveIcon.prev().val(),
+
+  }
+
+ var storedTasks = JSON.parse(localStorage.getItem(dailyTasks))
+
+
+        if (storedTasks === null) {
+            storedTasks= [];
+        }
+        storedTasks.push(dailyTasks);
+
+        localStorage.setItem("dailyTasks", JSON.stringify(storedTasks));
+
+ });
+
+
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-              //localStorage.getItem(timeBlock.children(2).text?);
+        
 
 });
 
