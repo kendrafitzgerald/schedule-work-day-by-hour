@@ -6,7 +6,7 @@ My motivation in building this project was to create a simple scheduler applicat
 
 ## Usage
 
-To use this application, simply enter your hourly events into the corresponding time block. Upon hitting the save button, your input will be stored in local storage and remain on the page if you reload. As the hours pass, you will notice that the past hours will turn grey, the current hour will be in red, and future hours and events will be in green. You will also notice that the current date is in the header of the app.
+To use this application, simply enter your hourly events into the corresponding time block. Upon hitting the save button, your input will be stored in local storage and remain on the page if you reload. As the hours pass, you will notice that the past hours will turn grey, the current hour will be in red, and future hours and events will be in green. You will also notice that the current date is in the header of the app. Here is a link to the deployed site: https://kendrafitzgerald.github.io/schedule-work-day-by-hour/ .
 
     ```md
     ![alt text](assets/images/screenshot.png)
