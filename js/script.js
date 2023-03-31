@@ -13,7 +13,16 @@ $(function () {
       $(".time-block").each(function() {
 
         var hourBlock = parseInt($(this).attr("id"));
+        console.log(typeof hourBlock)
 
+        if (hourBlock < currentHour) {
+          $(this).attr("class", "past");
+        } else if (hourBlock > currentHour) {
+          $(this).attr("class", "future");
+        } else {
+          $(this).attr("class", "present");
+        }
+      
 
       })
   
