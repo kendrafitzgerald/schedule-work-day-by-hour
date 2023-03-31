@@ -13,7 +13,7 @@ $(function () {
 
 //This sets the item in local storage when the user clicks the save button on their 
 //hour block. I targeted the container element so any save button within the parent
-//element of the app will respond to the event target. 
+//element of the app will respond to the event target
       containerEl.on('click', '.saveBtn', function(event){
 
         var saveButton = $(event.target)
